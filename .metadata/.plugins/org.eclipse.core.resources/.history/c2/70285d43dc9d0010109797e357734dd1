@@ -1,0 +1,32 @@
+/*
+ * My_gpio.c
+ *
+ *  Created on: Sep 30, 2025
+ *      Author: dangm
+ */
+
+#include "Gpio_Config.h"
+
+void GreenLed_On(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	Set_Pin(GPIOx, GPIO_Pin);
+}
+
+void GreenLed_Off(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	Reset_Pin(GPIOx, GPIO_Pin);
+}
+
+void RedLed_On(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	Set_Pin(GPIOx, GPIO_Pin);
+}
+
+void RedLed_Off(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	Reset_Pin(GPIOx, GPIO_Pin);
+}
+
+void BlueLed_On(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	Set_Pin(GPIOx, GPIO_Pin);
+}
+
+void BlueLed_Off(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	Reset_Pin(GPIOx, GPIO_Pin);
+}

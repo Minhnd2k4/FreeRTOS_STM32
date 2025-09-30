@@ -1,0 +1,32 @@
+/*
+ * My_gpio.c
+ *
+ *  Created on: Sep 30, 2025
+ *      Author: dangm
+ */
+
+#include "My_Gpio.h"
+
+void GreenLed_On(void) {
+	Set_Pin(PORT_LED_GREEN, GPIO_LED_GREEN);
+}
+
+void GreenLed_Off(void) {
+	Reset_Pin(PORT_LED_GREEN, GPIO_LED_GREEN);
+}
+
+void RedLed_On(void) {
+	Set_Pin(PORT_LED_RED, GPIO_LED_RED);
+}
+
+void RedLed_Off(void) {
+	Reset_Pin(PORT_LED_RED, GPIO_LED_RED);
+}
+
+void BlueLed_On(void) {
+	Set_Pin(PORT_LED_BLUE, GPIO_LED_BLUE);
+}
+
+void BlueLed_Off(void) {
+	Reset_Pin(PORT_LED_BLUE, GPIO_LED_BLUE);
+}
