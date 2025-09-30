@@ -1,0 +1,6 @@
+../Core/__Driver_Layer/GPIO/My_Gpio.c:10:6:GreenLed_On	8	static
+../Core/__Driver_Layer/GPIO/My_Gpio.c:14:6:GreenLed_Off	8	static
+../Core/__Driver_Layer/GPIO/My_Gpio.c:18:6:RedLed_On	8	static
+../Core/__Driver_Layer/GPIO/My_Gpio.c:22:6:RedLed_Off	8	static
+../Core/__Driver_Layer/GPIO/My_Gpio.c:26:6:BlueLed_On	8	static
+../Core/__Driver_Layer/GPIO/My_Gpio.c:30:6:BlueLed_Off	8	static

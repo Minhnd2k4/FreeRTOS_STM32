@@ -1,0 +1,30 @@
+/*
+ * my_gpio.h
+ *
+ *  Created on: Sep 30, 2025
+ *      Author: dangm
+ */
+
+#ifndef DRIVER_LAYER_GPIO_MY_GPIO_H_
+#define DRIVER_LAYER_GPIO_MY_GPIO_H_
+
+#include "Gpio_Config.h"
+
+#define PORT_LED_GREEN	GPIOA
+#define GPIO_LED_GREEN	GPIO_PIN_1
+
+#define PORT_LED_RED	GPIOA
+#define GPIO_LED_RED	GPIO_PIN_2
+
+#define PORT_LED_BLUE	GPIOC
+#define GPIO_LED_BLUE	GPIO_PIN_13
+
+void GreenLed_On(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+void GreenLed_Off(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+void RedLed_On(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+void RedLed_Off(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+void BlueLed_On(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+void BlueLed_Off(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+
+
+#endif /* DRIVER_LAYER_GPIO_MY_GPIO_H_ */
