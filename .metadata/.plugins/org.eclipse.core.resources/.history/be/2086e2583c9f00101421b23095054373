@@ -1,0 +1,132 @@
+/*
+ * mainSemPriorityInversion.c
+ *
+ *  Created on: Oct 2, 2025
+ *      Author: dangm
+ */
+
+#include <FreeRTOS.h>
+#include <semphr.h>
+#include "main.h"
+#include "../__Driver_Layer/GPIO/My_Gpio.h"
+
+#define STACK_SIZE		128
+
+
+// Private function to initialize config for STM operation
+static void SystemClock_Config();
+static void MX_GPIO_Init();
+void Error_Handler(void);
+
+
+static void BlinkTwice(LED_t* led);
+static void loopBusy(uint32_t numIteration);
+
+void TaskA(void *argument);
+void TaskB(void *argument);
+void TaskC(void *argument);
+
+SemaphoreHandle_t SemPtr = NULL;
+
+int main(void)
+{
+
+	SemPtr = xSemaphoreCreateBinary();
+	assert_param(SemPtr != NULL);
+
+	if(xTaskCreate(TaskA, "TaskA", STACK_SIZE, NULL, tskIDLE_PRIORITY + 3, NULL) != pdPASS)
+	{
+		// Printf via SEGGER or UART to notice TaskCreate failed
+		// SEGGER_SYSVIEW_Printf("");
+		while(1)
+		{
+
+		}
+	}
+
+	assert_param(xTaskCreate(TaskB, "TaskB", STACK_SIZE, NULL, tskIDLE_PRIORITY + 2, NULL) == pdPASS);
+	assert_param(xTaskCreate(TaskC, "TaskC", STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL) == pdPASS);
+
+	xSemaphoreGive(SemPtr);
+
+	vTaskStartScheduler();
+	while(1)
+	{
+
+	}
+}
+
+void TaskA(void *argument)
+{
+	while(1)
+	{
+		// SEGGER_SYSVIEW_Printf("attempt to take Semaphore");
+		if(xSemaphoreTake(SemPtr, 200 / portTICK_PERIOD_MS) == pdPASS)
+		{
+			RedLED.Off();
+			// SEGGER_SYSVIEW_Printf("take sem success");
+			BlinkTwice(&GreenLED);
+			xSemaphoreGive(SemPtr);
+		}
+		else
+		{
+			RedLED.On();
+			// SEGGER_SYSVIEW_Printf("take sem failed in time");
+
+		}
+		vTaskDelay(stmrand(5, 20));
+	}
+}
+
+void TaskB(void *argument)
+{
+
+}
+
+void taskC(void *argument)
+{
+
+}
+
+static void BlinkTwice(LED_t *led)
+{
+	for(uint8_t i = 0; i < 2; i++)
+	{
+		led->On();
+		vTaskDelay(43 / portTICK_PERIOD_MS);
+		led->Off();
+		vTaskDelay(43 / portTICK_PERIOD_MS);
+	}
+}
+
+static void loopBusy(uint32_t numIteration)
+{
+
+}
+
+uint8_t stmrand(int min, int max)
+{
+	// This is function to get random value from min to max
+	// This is function prototype and this function failed but no have idea
+	return (min + max)/2;
+}
+
+static void SystemClock_Config(void)
+{
+
+}
+
+static void MX_GPIO_Init(void)
+{
+
+}
+
+void Error_Handler(void)
+{
+
+}
+
+void assert_failed(uint8_t *file, uint32_t line)
+{
+
+}

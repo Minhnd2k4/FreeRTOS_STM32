@@ -1,9 +1,0 @@
-../Core/Src/mainPollExample.c:74:6:GreenTaskA	24	static
-../Core/Src/mainPollExample.c:90:6:BlueTaskB	24	static
-../Core/Src/mainPollExample.c:106:6:RedTask	24	static
-../Core/Src/mainPollExample.c:125:6:LookBusy	16	static
-../Core/Src/mainPollExample.c:139:5:main	16	static
-../Core/Src/mainPollExample.c:228:6:SystemClock_Config	72	static
-../Core/Src/mainPollExample.c:265:13:MX_GPIO_Init	32	static
-../Core/Src/mainPollExample.c:318:6:Error_Handler	4	static,ignoring_inline_asm
-../Core/Src/mainPollExample.c:336:6:assert_failed	16	static

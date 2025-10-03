@@ -1,0 +1,77 @@
+/*
+ * mainSemPriorityInversion.c
+ *
+ *  Created on: Oct 2, 2025
+ *      Author: dangm
+ */
+
+#include <FreeRTOS.h>
+#include <semphr.h>
+#include "main.h"
+#include "../__Driver_Layer/GPIO/My_Gpio.h"
+
+#define STACK_SIZE		128
+
+
+// Private function to initialize config for STM operation
+static void SystemClock_Config();
+static void MX_GPIO_Init();
+void Error_Handler(void);
+
+
+static void BlinkTwice(LED_t* led);
+static void loopBusy(uint32_t numIteration);
+
+void TaskA(void *argument);
+void TaskB(void *argument);
+void TaskC(void *argument);
+
+SemaphoreHandle_t SemPtr = NULL;
+
+int main(void)
+{
+	while(1)
+	{
+
+	}
+}
+
+void TaskA(void *argument)
+{
+
+}
+
+void TaskB(void *argument)
+{
+
+}
+
+void taskC(void *argument)
+{
+
+}
+
+static void BlinkTwice(LED_t *led)
+{
+
+}
+
+static void loopBusy(uint32_t numIteration)
+{
+
+}
+
+static void SystemClock_Config(void)
+{
+
+}
+
+static void MX_GPIO_Init(void)
+{
+
+}
+
+void Error_Handler(void)
+{
+
+}

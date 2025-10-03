@@ -1,0 +1,18 @@
+/*
+ * Gpio_Config.h
+ *
+ *  Created on: Oct 2, 2025
+ *      Author: dangm
+ */
+
+#ifndef DRIVER_LAYER_GPIO_GPIO_CONFIG_H_
+#define DRIVER_LAYER_GPIO_GPIO_CONFIG_H_
+
+#include "stm32f1xx_hal.h"
+#include "stdbool.h"
+
+void Set_Pin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+void Reset_Pin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+bool Read_Pin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+
+#endif /* DRIVER_LAYER_GPIO_GPIO_CONFIG_H_ */

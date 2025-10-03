@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Queue/Core/Src/mainQuuCompositepPassByValue.c&apos; to &apos;mainQueueCompositepPassByValue.c&apos;" description="Rename resource &apos;mainQuuCompositepPassByValue.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/mainQuuCompositepPassByValue.c" name="mainQueueCompositepPassByValue.c" stamp="1759385045542" updateReferences="true"/>
+</session>

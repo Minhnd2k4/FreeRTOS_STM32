@@ -1,0 +1,3 @@
+../Core/__Driver_Layer/GPIO/Gpio_Config.c:9:6:Set_Pin	1
+../Core/__Driver_Layer/GPIO/Gpio_Config.c:13:6:Reset_Pin	1
+../Core/__Driver_Layer/GPIO/Gpio_Config.c:17:6:Read_Pin	1
