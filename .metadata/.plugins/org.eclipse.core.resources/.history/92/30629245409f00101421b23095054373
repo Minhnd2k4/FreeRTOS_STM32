@@ -1,0 +1,191 @@
+/*
+ * mainSemPriorityInversion.c
+ *
+ *  Created on: Oct 2, 2025
+ *      Author: dangm
+ */
+
+#include <FreeRTOS.h>
+#include <semphr.h>
+#include "main.h"
+#include "../__Driver_Layer/GPIO/My_Gpio.h"
+
+#define STACK_SIZE		128
+#define USE_FULL_ASSERT
+
+// Private function to initialize config for STM operation
+static void SystemClock_Config();
+static void MX_GPIO_Init();
+void Error_Handler(void);
+
+
+static void BlinkTwice(LED_t* led);
+static void loopBusy(uint32_t numIteration);
+
+void TaskA(void *argument);
+void TaskB(void *argument);
+void TaskC(void *argument);
+
+SemaphoreHandle_t SemPtr = NULL;
+
+int main(void)
+{
+
+	SemPtr = xSemaphoreCreateBinary();
+	assert_param(SemPtr != NULL);
+
+	if(xTaskCreate(TaskA, "TaskA", STACK_SIZE, NULL, tskIDLE_PRIORITY + 3, NULL) != pdPASS)
+	{
+		// Printf via SEGGER or UART to notice TaskCreate failed
+		// SEGGER_SYSVIEW_Printf("");
+		while(1)
+		{
+
+		}
+	}
+
+	assert_param(xTaskCreate(TaskB, "TaskB", STACK_SIZE, NULL, tskIDLE_PRIORITY + 2, NULL) == pdPASS);
+	assert_param(xTaskCreate(TaskC, "TaskC", STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL) == pdPASS);
+
+	xSemaphoreGive(SemPtr);
+
+	vTaskStartScheduler();
+	while(1)
+	{
+
+	}
+}
+
+void TaskA(void *argument)
+{
+	while(1)
+	{
+		// SEGGER_SYSVIEW_Printf("attempt to take Semaphore");
+		if(xSemaphoreTake(SemPtr, 200 / portTICK_PERIOD_MS) == pdPASS)
+		{
+			RedLED.Off();
+			// SEGGER_SYSVIEW_Printf("take sem success");
+			BlinkTwice(&GreenLED);
+			xSemaphoreGive(SemPtr);
+		}
+		else
+		{
+			RedLED.On();
+			// SEGGER_SYSVIEW_Printf("take sem failed in time");
+
+		}
+		vTaskDelay(stmrand(5, 20));
+	}
+}
+
+void TaskB(void *argument)
+{
+	uint8_t conuter = 0;
+	while(1)
+	{
+	// SEGGER_SYSVIEW_Printf("starting iteration %u", counter++);
+	vTaskDelay(50);
+	loopBusy(200);
+	}
+}
+
+void taskC(void *argument)
+{
+	while(1)
+	{
+		// SEGGER_SYSVIEW_Printf("attempt to take Semaphore");
+				if(xSemaphoreTake(SemPtr, 200 / portTICK_PERIOD_MS) == pdPASS)
+				{
+					RedLED.Off();
+					// SEGGER_SYSVIEW_Printf("take sem success");
+					BlinkTwice(&BlueLED);
+					xSemaphoreGive(SemPtr);
+				}
+				else
+				{
+					RedLED.On();
+					// SEGGER_SYSVIEW_Printf("take sem failed in time");
+
+				}
+				vTaskDelay(stmrand(5, 20));
+	}
+}
+
+static void BlinkTwice(LED_t *led)
+{
+	for(uint8_t i = 0; i < 2; i++)
+	{
+		led->On();
+		vTaskDelay(43 / portTICK_PERIOD_MS);
+		led->Off();
+		vTaskDelay(43 / portTICK_PERIOD_MS);
+	}
+}
+
+static void loopBusy(uint32_t numIteration)
+{
+	for (int i = 0; i < numIteration; i++)
+	{
+		uint8_t NotCare = i % 4;
+	}
+}
+
+uint8_t stmrand(int min, int max)
+{
+	// This is function to get random value from min to max
+	// This is function prototype and this function failed but no have idea
+	return (min + max)/2;
+}
+
+static void SystemClock_Config(void)
+{
+	RCC_OscInitTypeDef RCC_OscInitStruct;
+	RCC_ClkInitTypeDef RCC_ClkInitStruct;
+
+	RCC_OscInitStruct
+}
+
+
+static void MX_GPIO_Init(void)
+{
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+
+	GPIO_InitStruct.Pin 	= GPIO_PIN_13;
+	GPIO_InitStruct.Mode 	= GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull	= GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+
+	GPIO_InitStruct.Pin  	= GPIO_PIN_1 | GPIO_PIN_2;
+	GPIO_InitStruct.Mode 	= GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull	= GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1 | GPIO_PIN_2, GPIO_PIN_RESET);
+}
+
+void Error_Handler(void)
+{
+	__disable_irq();
+	// printf to notice Error_Handler via UART or SEGGER_SYSVIEW
+	while(1)
+	{
+
+	}
+}
+
+#ifdef USE_FULL_ASSERT
+void assert_failed(uint8_t *file, uint32_t line)
+{
+	  /* SEGGER_SYSVIEW_PrintfHost("Assertion Failed:file %s \
+		 on line %d\r\n", file, line); */
+
+		 while(1);
+}
+#endif

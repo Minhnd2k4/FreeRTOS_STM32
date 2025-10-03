@@ -1,0 +1,13 @@
+/*
+ * mainMutexExam.c
+ *
+ *  Created on: Oct 2, 2025
+ *      Author: dangm
+ */
+
+#include <FreeRTOS.h>
+#include <semphr.h>
+#include "main.h"
+#include "../__Driver_Layer/GPIO/My_Gpio.h"
+
+

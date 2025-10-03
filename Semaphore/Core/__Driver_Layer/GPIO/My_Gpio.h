@@ -19,6 +19,17 @@
 #define PORT_LED_BLUE	GPIOC
 #define GPIO_LED_BLUE	GPIO_PIN_13
 
+typedef void (*GPIOFunc)(void);
+
+typedef struct {
+	const GPIOFunc On;
+	const GPIOFunc Off;
+}LED_t;
+
+extern LED_t BlueLED;
+extern LED_t GreenLED;
+extern LED_t RedLED;
+
 void GreenLed_On(void);
 void GreenLed_Off(void);
 void RedLed_On(void);
