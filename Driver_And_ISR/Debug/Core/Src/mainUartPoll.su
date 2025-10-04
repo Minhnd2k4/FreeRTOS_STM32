@@ -1,0 +1,8 @@
+../Core/Src/mainUartPoll.c:81:5:main	16	static
+../Core/Src/mainUartPoll.c:172:6:SystemClock_Config	72	static
+../Core/Src/mainUartPoll.c:209:13:MX_USART1_UART_Init	8	static
+../Core/Src/mainUartPoll.c:242:13:MX_GPIO_Init	16	static
+../Core/Src/mainUartPoll.c:257:6:UartTaskPoll	16	static
+../Core/Src/mainUartPoll.c:278:6:TaskPrintf	24	static
+../Core/Src/mainUartPoll.c:305:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/mainUartPoll.c:323:6:assert_failed	16	static

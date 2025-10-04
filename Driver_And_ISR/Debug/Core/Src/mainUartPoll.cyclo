@@ -1,0 +1,8 @@
+../Core/Src/mainUartPoll.c:81:5:main	2
+../Core/Src/mainUartPoll.c:172:6:SystemClock_Config	3
+../Core/Src/mainUartPoll.c:209:13:MX_USART1_UART_Init	2
+../Core/Src/mainUartPoll.c:242:13:MX_GPIO_Init	1
+../Core/Src/mainUartPoll.c:257:6:UartTaskPoll	4
+../Core/Src/mainUartPoll.c:278:6:TaskPrintf	2
+../Core/Src/mainUartPoll.c:305:6:Error_Handler	1
+../Core/Src/mainUartPoll.c:323:6:assert_failed	1
