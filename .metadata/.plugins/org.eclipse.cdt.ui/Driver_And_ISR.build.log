@@ -1,17 +1,17 @@
-20:46:33 **** Incremental Build of configuration Debug for project Driver_And_ISR ****
+07:28:10 **** Incremental Build of configuration Debug for project Driver_And_ISR ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/mainUartPoll.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainUartPoll.d" -MT"Core/Src/mainUartPoll.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/mainUartPoll.o"
 arm-none-eabi-gcc -o "Driver_And_ISR.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\dangm\OneDrive\Documents\STM32\FreeRTOS\Driver_And_ISR\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Driver_And_ISR.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Driver_And_ISR.elf
  
 arm-none-eabi-size  Driver_And_ISR.elf 
 arm-none-eabi-objdump -h -S Driver_And_ISR.elf  > "Driver_And_ISR.list"
    text	   data	    bss	    dec	    hex	filename
-   8892	     12	   2804	  11708	   2dbc	Driver_And_ISR.elf
+  14092	     16	   6024	  20132	   4ea4	Driver_And_ISR.elf
 Finished building: default.size.stdout
  
 Finished building: Driver_And_ISR.list
  
 
-20:46:34 Build Finished. 0 errors, 0 warnings. (took 1s.144ms)
+07:28:11 Build Finished. 0 errors, 0 warnings. (took 1s.235ms)
 

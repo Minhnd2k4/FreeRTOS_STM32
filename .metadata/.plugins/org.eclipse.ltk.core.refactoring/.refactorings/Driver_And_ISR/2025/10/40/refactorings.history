@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Driver_And_ISR/Core/Src/main.c&apos; to &apos;mainUartPoll.c&apos;" description="Rename resource &apos;main.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/main.c" name="mainUartPoll.c" stamp="1759499773512" updateReferences="false"/>
+</session>
